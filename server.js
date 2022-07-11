@@ -14,13 +14,13 @@ app.use(express.urlencoded());
 app.use('/api/routes', clDetailsRoutes) 
 
 // serve frontend if in production
-if(process.env.NODE_ENV === 'production'){
+
     app.use(express.static(path.resolve('client/build')))
 
     app.get('*', (req,res) => {
         res.sendFile(__dirname, 'client/build', 'index.html')
     })
-}
+
 
 
 mongoose.connect(process.env.MONG_URI).then(() => { 
